@@ -2,6 +2,12 @@
 
 Protótipo interativo, independente, com identidade genérica e dados fictícios.
 
+## Captura de tela
+
+Tela capturada no navegador com dados fictícios, em 24/09/2026.
+
+![Interface demonstrativa](docs/tela-demonstracao.jpg)
+
 ## Problema
 
 Um checklist diário precisa conservar pendências ainda não resolvidas, mesmo quando a data muda.
@@ -24,6 +30,16 @@ python3 -m http.server 8080
 
 Abra http://localhost:8080. Não são necessárias contas, credenciais, instalação de pacotes ou configuração de banco.
 
+
+### Desenvolvimento com Vite (opcional)
+
+```bash
+npm ci
+npm run dev
+```
+
+`npm run build` gera a versão estática em `dist/`. O servidor Python acima continua funcionando sem instalar dependências.
+
 ## Tecnologias e decisões
 
 - HTML semântico, CSS responsivo e JavaScript sem dependências de execução.
@@ -45,3 +61,7 @@ Perfis são seletores de demonstração, não autenticação ou controle de aces
 ## Licença
 
 Nenhuma licença de código aberto foi concedida neste repositório.
+
+## Verificação
+
+Conferido em navegador em 24/09/2026: Pendência preservada após avançar o dia e resolução pelo administrador confirmada. Essas interações são simulações locais, sem autenticação ou gravação em servidor.

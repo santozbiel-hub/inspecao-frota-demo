@@ -1,0 +1,13 @@
+{
+  "name": "inspecao-frota-demo",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "dev": "vite",
+    "build": "vite build"
+  },
+  "devDependencies": {
+    "vite": "^7.1.0"
+  }
+}
+
