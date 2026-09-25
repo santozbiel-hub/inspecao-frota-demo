@@ -1,0 +1,43 @@
+[build]
+  command = "npm run build"
+  publish = ".next"
+
+[build.environment]
+  NODE_VERSION = "22"
+  # Não commitar chave nenhuma aqui. NEXT_PUBLIC_SUPABASE_URL e
+  # NEXT_PUBLIC_SUPABASE_ANON_KEY são configuradas no painel do Netlify,
+  # em Site configuration → Environment variables.
+
+[[plugins]]
+  package = "@netlify/plugin-nextjs"
+
+# O service worker não pode ser servido de um cache antigo: se ficar
+# preso, o app deixa de receber atualizações no aparelho do motorista.
+[[headers]]
+  for = "/sw.js"
+  [headers.values]
+    Cache-Control = "public, max-age=0, must-revalidate"
+    Service-Worker-Allowed = "/"
+
+[[headers]]
+  for = "/manifest.webmanifest"
+  [headers.values]
+    Cache-Control = "public, max-age=0, must-revalidate"
+
+[[headers]]
+  for = "/_next/static/*"
+  [headers.values]
+    Cache-Control = "public, max-age=31536000, immutable"
+
+[[headers]]
+  for = "/*"
+  [headers.values]
+    X-Frame-Options = "DENY"
+    X-Content-Type-Options = "nosniff"
+    Referrer-Policy = "strict-origin-when-cross-origin"
+    Permissions-Policy = "camera=(self), geolocation=(), microphone=()"
+    # Achado de auditoria: faltava instruir o navegador a nunca tentar HTTP
+    # neste domínio, nem num link antigo salvo por alguém. O Netlify já
+    # redireciona HTTP → HTTPS; isto fecha a janela do primeiro request.
+    Strict-Transport-Security = "max-age=31536000; includeSubDomains"
+
